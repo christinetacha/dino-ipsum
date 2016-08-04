@@ -1,12 +1,12 @@
 Dino = function(){
 };
 
-Dino.prototype.writeLetter = function(name, recipient, number) {
-  $.get('http://dinoipsum.herokuapp.com/api/?format=json&paragraphs=' + number).then(function(response) {
+Dino.prototype.writeLetter = function(name, recipient, number, displayLetter) {
+  $.get('http://dinoipsum.herokuapp.com/api/?format=html&paragraphs=' + number).then(function(response) {
     console.log(response);
-      // displayLetter(name, recipient, response.main.humidity);
+    displayLetter(name, recipient, response);
   }).fail(function(error) {
-    $('.showLetter').text(error.responseJSON.message);
+    $('.showLetter').text(error.response.message);
   });
 };
 
